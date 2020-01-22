@@ -34,29 +34,8 @@
       <script src="js/html5shiv.min.js"></script>
       <script src="js/respond.min.js"></script>
       <![endif]-->
-      <!-- jquery js-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-      <script>
-         $(document).ready(function() {
-            $('#submit').click(function(e) {
-              e.preventDefault();
-               $('#submit').html('صبر کنید ...');
-               $.post("sendmail.php", $("#contactform").serialize(), function(response) {
-                  $('#success').html(response);
-                  $('#submit').html('صبر کنید ...');
-               })
-               .done(function() {
-                  $('#submit').html( "ارسال  شد :)" );
-                  $('#contactform').trigger("reset");
-                })
-                .fail(function() {
-                  $('#submit').html( "لطفا دوباره امتحان کنید." );
-                });
-               return false;
-            });
-         });
-      </script>
-</head>
+      
+	</head>
    <body>
       <!-- ====== Preloader ====== -->
       <div class="preloader js-preloader flex-center"></div>
@@ -485,23 +464,31 @@
                         <h2>تماس با ما</h2>
                      </div>
                      <div class="content-sec">
-                        <form id="contactform" action="#">
-                           <div class="form-group">
-                              <input type="text" id="name"  name="name" placeholder="نام و نام خانوادگی">
-                           </div>
-                           <div class="form-group">
-                              <input type="text" id="email" name="email" placeholder="ایمیل">
-                           </div>
-                           <div class="form-group">
-                              <input type="text"  id="subject" name="phone" placeholder="تلفن">
-                           </div>
-                           <div class="form-group">
-                              <textarea id="message" name="message" placeholder="متن"></textarea>
-                           </div>
-                           <div class="form-group">
-                              <button id="submit" class="btn btn-primary" type="submit">ارسال</button>
-                           </div>
-                        </form>
+                        <form id="my-form"
+						  action="https://formspree.io/mjvyzkkb"
+						  method="POST"
+						>
+						<div class="form-group">
+						  <input type="text" id="name"  name="name" placeholder="نام و نام خانوادگی">
+						  </div>
+						  <div class="form-group">
+						    <input type="text" id="email" name="email" placeholder="ایمیل">
+						  </div>
+						  <div class="form-group">
+						    <input type="text"  id="subject" name="phone" placeholder="تلفن">
+						  </div>
+						  <div class="form-group">
+						    <textarea id="message" name="message" placeholder="متن"></textarea>
+						  </div>
+						  <div class="form-group">
+						    <button id="my-form-button" class="btn btn-primary">ارسال</button>
+						  </div>
+						  <p id="my-form-status" class="alert alert-success" style="display: none;">
+						  </p>
+						  <p id="my-form-status-err" class="alert alert-danger"
+						  style="display: none;">
+						  </p>
+						</form>
                      </div>
                   </div>
                </div>
@@ -517,6 +504,62 @@
       </footer>
       <a href="javascript:void(0)" id="scroll"></a>
       <!-- ====== Footer End ====== -->
+
+
+      <!-- jquery js-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+      <!-- Email -->
+      <script>
+        window.addEventListener("DOMContentLoaded", function() {
+
+          // get the form elements defined in your form HTML above
+          
+          var form = document.getElementById("my-form");
+          var button = document.getElementById("my-form-button");
+          var status = document.getElementById("my-form-status");
+          var statusErr = document.getElementById("my-form-status-err");
+
+          // Success and Error functions for after the form is submitted
+          
+          function success() {
+            form.reset();
+            statusErr.style.display = "none";
+            status.style.display = "block";
+            status.innerHTML = "ممنون، در اولین فرصت بررسی میشه :)";
+          }
+
+          function error() {  
+           status.style.display = "none";
+           statusErr.style.display = "block";
+            statusErr.innerHTML = "شرمنده، دوباره تلاش کنید :(";
+          }
+
+          // handle the form submission event
+
+          form.addEventListener("submit", function(ev) {
+            ev.preventDefault();
+            var data = new FormData(form);
+            ajax(form.method, form.action, data, success, error);
+          });
+        });
+        
+        // helper function for sending an AJAX request
+
+        function ajax(method, url, data, success, error) {
+          var xhr = new XMLHttpRequest();
+          xhr.open(method, url);
+          xhr.setRequestHeader("Accept", "application/json");
+          xhr.onreadystatechange = function() {
+            if (xhr.readyState !== XMLHttpRequest.DONE) return;
+            if (xhr.status === 200) {
+              success(xhr.response, xhr.responseType);
+            } else {
+              error(xhr.status, xhr.response, xhr.responseType);
+            }
+          };
+          xhr.send(data);
+        }
+      </script>
       <!-- popper js--> 
       <script src="js\popper.min.js"></script> 
       <!-- bootstrap js--> 
@@ -579,7 +622,8 @@
              }
          })
       </script>
-      
+      <!-- Header menu -->
+      <script src="js\jquery.smartmenus.min.js"></script>
       <!-- Custome js--> 
       <script src="js\custom.js"></script>
    </body>

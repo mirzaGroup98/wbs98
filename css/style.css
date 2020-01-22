@@ -2603,3 +2603,6 @@ footer.small .bottom {
 .service_icon .flaticon-app::before{
     font-family: Flaticon2 !important;
 }
+.close {
+    float: left !important;
+}
