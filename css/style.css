@@ -46,10 +46,30 @@ a,b,h1,h2,h3,h4,h5,h6,p,span{
 }
 
 
-/****---- Homepage 1 Start ----****/
+/****---- Homepage Start ----****/
 
-
-
+@media (max-width: 991px){
+    .navbar-collapse {
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    top: 30px;
+    }
+    .navbar-nav .nav-item a, .navbar-nav .dropdown-item a, .navbar-expand-lg .navbar-nav .nav-link {
+    padding: 10px 0;
+    display: block;
+    }
+}
+@media only screen and (max-width: 640px) {
+    .slider, .owl-main {
+        height: 100vh !important;
+    }
+}
+@media only screen and (max-width: 1200px) {
+    .owl-main .item {
+        height: 100vh !important;
+    }
+}
 /*---- Header ----*/
 
 header {
