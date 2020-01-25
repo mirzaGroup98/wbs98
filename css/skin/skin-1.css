@@ -125,3 +125,19 @@ nav ul.pagination .page-link:hover,
 	-webkit-box-shadow: 0px 5px 32px -7px rgb(61, 177, 222);
 }
 
+header .nav-brand a #mirza-logo-w {
+	display: inline-block;
+}
+header .nav-brand a #mirza-logo-b {
+	display: none;
+}
+header.sticky .nav-brand a #mirza-logo-w {
+	display: none;
+}
+header.sticky .nav-brand a #mirza-logo-b {
+	display: inline-block;
+}
+.navbar-brand {
+    padding-top: .2125rem;
+    padding-bottom: .2125rem;
+}
