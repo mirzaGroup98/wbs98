@@ -143,14 +143,20 @@
      float:left;
      width:25%;
 }
+@media only screen and (max-width: 990px){
+    .navbar-nav .nav-item {
+        width: 50%;
+        text-align: center;
+    }
+}
  @media (max-width: 991px) {
      .navbar-collapse{
          background-color:#262626;
          margin-top: 20px;
          margin-left: 0;
          padding: 10px 25px;
-         overflow-y: scroll;
-         max-height: 300px;
+         /*overflow-y: auto;
+         max-height: 300px;*/
     }
      .navbar-nav .dropdown-menu{
         border-left: dashed 1px #494949;

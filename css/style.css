@@ -890,7 +890,14 @@ header.sticky {
     background: none;
 }
 
-
+@media only screen and (max-width: 767px){
+    .portfolio .item .project {
+        height: 290px !important;
+    }
+    .portfolio .item .project a img {
+        width: 100% !important;
+    }
+}
 /*---- Blog Posts ----*/
 
 .blog_post {

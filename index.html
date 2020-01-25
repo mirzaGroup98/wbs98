@@ -57,7 +57,7 @@
                      <div class="main-menu collapse navbar-collapse " id="nav-content">
                         <ul class="navbar-nav ">
                            <li class="nav-item" >
-                              <a  href="index.html" title="Home"> خانه </a>
+                              <a  href="#top" title="Home"> خانه </a>
                            </li>
                            <li class="nav-item" >
                               <a  href="#about" title="About Us">درباره ما</a>
@@ -84,7 +84,7 @@
          <!-- ====== Header End ====== --> 
          <!-- ====== Slider Start ====== -->
       
- <div class="slider style-1" style="direction: ltr;">
+ <div id="top" class="slider style-1" style="direction: ltr;">
        <div class="owl-main owl-carousel owl-theme">
           <div class="item"> 
             <img src="img\banner-1.jpg" alt="First slide">
@@ -107,8 +107,6 @@
             <div class="caption">
             <div class="display">آژانس دیجیتال مارکتینگ میرزا</div>
             <div class="content">آژانس دیجیتال مارکتینگ میرزا با داشتن نیروهای متخصص در عرصه ملی و بین المللی آماده است تا چشم اندازی تازه در کسب و کارتان ایجاد کند</div>
-
-
             </div>    
             </div>
         </div>
@@ -425,7 +423,7 @@
                               <div class="detail">
                                  <h6>آدرس</h6>
                                  <div class="content">
-                                    دفتر مرکزی : <span class="value"> گیلان، خیابان  سعدی، ابتدای کوچه یوسف زاده، جنب آموزشگاه گیلان مهارت</span>
+                                    دفتر مرکزی : <span class="value"> گیلان، رشت، خیابان  سعدی، ابتدای کوچه یوسف زاده، جنب آموزشگاه گیلان مهارت</span>
                                  </div>
                               </div>
                            </li>
@@ -624,6 +622,12 @@
                  }
              }
          })
+      </script>
+      <!-- script -->
+      <script type="text/javascript">
+        $('.navbar-nav>li>a').on('click', function(){
+            $('.navbar-collapse').collapse('hide');
+        });
       </script>
       <!-- Header menu -->
       <script src="js\jquery.smartmenus.min.js"></script>
